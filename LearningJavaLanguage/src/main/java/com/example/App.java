@@ -9,6 +9,7 @@ public class App {
 
 	public static void main(String[] args) {
 
+		int cont = 0;
 		/*
 		 * ¿Que es un Array?
 		 * 
@@ -196,7 +197,19 @@ public class App {
 			}
 		}
 		
-		
+		// Ejercicio 3!!!
+		System.out.println("-------     Elementos Impares   ------");
+		for(int numeroEntero : numerosEnteros) {
+			if (numeroEntero % 2 != 0)  {
+				cont++;
+				System.out.println(numeroEntero);
+				
+			}
+			
+			
+		}
+			System.out.println("El total de números Impares es: " + cont);
+				
 	}
 }
 
