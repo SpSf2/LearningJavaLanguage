@@ -5,7 +5,7 @@ import java.time.Month;
 
 public class App {
 	
-	static final int TOTAL_ELEMENTOS = 10;
+	static final int TOTAL_ELEMENTOS = 100;
 
 	public static void main(String[] args) {
 
@@ -14,7 +14,7 @@ public class App {
 		 * 
 		 * https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
 		 * 
-		 * Es un identificador que, a direncia de una variable, hace referencia a una
+		 * Es un identificador que, a diferencia de una variable, hace referencia a una
 		 * zona en la memoria RAM donde se almacenan un conjunto de valores del mismo
 		 * tipo de dato.
 		 * 
@@ -52,7 +52,7 @@ public class App {
 		System.out.println("El primer elemento del array seria: " + numeros[0]);
 
 		/*
-		 * numeros es un array de tamaño fijo, puedo modificar sus elementos paro no
+		 * numeros es un array de tamaño fijo, puedo modificar sus elementos pero no
 		 * agregar ni eliminar ninguno
 		 */
 
@@ -129,11 +129,11 @@ public class App {
 		 * 
 		 * De anteriores operadores vamos a ejemplificar, a continuacion, el
 		 * operador % (utilizado, entre otras cosas, para saber si un numero 
-		 * es para o no) 
+		 * es "par" o no) 
 		 * 
 		 * Vamos a implementar una sentencia de control de flujo, que no existe en SQL
 		 * que es la sentencia for, que se utiliza para recorrer los elementos de un
-		 * array, porque se conoce a priori la contidad de elementos del erray 
+		 * array, porque se conoce a priori la cantidad de elementos del erray 
 		 * 
 		 * Primero utilizaremos la sentencia for clasica y posteriormente la sentencia
 		 * for mejorado (mal llamado for each) */
@@ -171,13 +171,31 @@ public class App {
 		 * aqui si importa el orden, por ejemplo
 		 * 
 		 * ++i * 25; Primero incrementa el valor de la i y luego lo multiplica por 25
-		 * i-- * 25; Premero decrementa el valor de la i y luego la multiplica por 25
+		 * i-- * 25; Primero decrementa el valor de la i y luego la multiplica por 25
 		 * */
 		
 		for (int i = 0; i <= TOTAL_ELEMENTOS - 1; i++) {
 			
 			numerosEnteros[i] = i + 1;
 		}
+		
+		//  Mostrar los elementos del array original utilizando una sentencia de for mejorada
+		System.out.println("-----------  Array Original  ----------");
+		
+		for(int numeroEntero : numerosEnteros)
+			System.out.println(numeroEntero);
+	// Utilizando una sentencia for clásica, recorrer el array numerosEnteros y mostrar solamente
+		//  los que sean pares
+		System.out.println("-----------   Elementos que son 'Par' del Array Original   -----------");
+		for (int i = 0; i <= TOTAL_ELEMENTOS - 1; i++)  {
+			if (numerosEnteros[i] % 2 == 0) {
+				// Si entramos en este bloque (llave de apertura y de cierre {}) quiere decir que 
+				// el elemneto del array numerosEnteros es "Par"
+				System.out.println(numerosEnteros[i]);
+			
+			}
+		}
+		
 		
 	}
 }
