@@ -210,6 +210,31 @@ public class App {
 		}
 			System.out.println("El total de números Impares es: " + cont);
 				
+			//   ****  Sentencias de Asignación Compuestas  ****
+			
+			/* La expresión siguiente al evaluarse, se promueve al tipo de dato int primitivo
+			 * los valores de las variables a y b, dando como resultado un valor int que no se
+			 *  puede almacenar en u  tipo short, por lo cual hay que realizar un casteo
+			 *  (type casting) que es simplemente forzar el tipo de un resultado al tipo de 
+			 *  datos que queramos y se esscribe entre parentesis.
+			 */
+			byte a = 10;
+			short b = 10;
+			
+			// b= a + b;
+			
+			// La expresion anterior genera un error en tiempo de compilación,
+			// es decir, que no hay que ejecutar el programa para que ya te informe del error.
+			
+			b = (short) (a + b);
+			System.out.println("Resultado Casteado explicitamente: " + b);
+			
+			/* El casteo debe ser evitado en la medida de las posibilidades, asi que la situación
+			 * anterior se soluciona con una sentencia de asignación compuesta  */
+			 
+			
+			
+		
 	}
 }
 
