@@ -5,77 +5,29 @@ import java.time.Month;
 
 public class App {
 	
-	static final int TOTAL_ELEMENTOS = 100;
-
+	static void printObject(Object object) {
+		
+		/*Recibe como parametro un object y en dependencia del tipo, imprimirá el salario si se trata de
+		 * un empleado o el total de asignaturas si se tratase de un estudiante*/
+		
+		if (object instanceof Empleado) {
+			
+			Empleado empleado = (Empleado) object;
+			
+			System.out.println("Salario del empleado: " + empleado.getSalario());
+		} else if (object instanceof Estudiante)  {
+			
+			Estudiante estudiante = (Estudiante) object;
+			
+			System.out.println("Total de Asignaturas del Estudiante: " + estudiante.getTotalAsignaturas());
+			
+		} else  {
+			System.out.println("No es ni Empleado ni Estudiante");
+		}
+	}
+	
 	public static void main(String[] args) {
-
-		int cont = 0;
-		/*
-		 * ¿Que es un Array?
-		 * 
-		 * https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
-		 * 
-		 * Es un identificador que, a diferencia de una variable, hace referencia a una
-		 * zona en la memoria RAM donde se almacenan un conjunto de valores del mismo
-		 * tipo de dato.
-		 * 
-		 * Un array, una vez creado, es de tamaño fijo, se pueden modificar sus
-		 * elementos pero no se puede aumentar ni disminuir la cantidad de elementos del
-		 * array
-		 * 
-		 * Para acceder a los elementos de un array se utiliza un indice, entre
-		 * corchetes, que se inicia en el valor cero
-		 */
-
-		/*
-		 * Supongamos que tenemos una aplicacion que maneja nombres, si por cada nombre
-		 * creamos una variable, seria bastante engorroso recorrer todos los nombres a
-		 * traves de los nombres de las variables, ademas de lo complicado que seria
-		 * darle mantenimiento a una aplicacion de este tipo
-		 */
-
-		String nombre1 = "Carolina";
-		String nombre2 = "Jorge";
-		String nombre3 = "Dani";
-
-		/* ¿Como declarar un array con los elementos anteriores? */
-
-		String[] nombres = { "Carolina", "Jorge", "Dani" };
-
-		/* A continuacion declaramos un array de numeros enteros primitivos */
-
-		int[] numeros = { 1, 2, 3, 4, 5 };
-
-		/* Mostrar por consola la cantidad de elementos que tiene el array numeros */
-		System.out.println("El array numeros tiene: " + numeros.length + " elementos");
-
-		/* Para mostrar el primer elemento del array numeros */
-		System.out.println("El primer elemento del array seria: " + numeros[0]);
-
-		/*
-		 * numeros es un array de tamaño fijo, puedo modificar sus elementos pero no
-		 * agregar ni eliminar ninguno
-		 */
-
-		// modificar el primer elemento del array
-		numeros[0] = 100;
-
-		System.out.println(numeros[0]);
-
-		/*
-		 * Crear arrays reservando en memoria espacio para los elementos que tendra el
-		 * array posteriormente
-		 */
-		int[] numeros2 = new int[10];
-
-		System.out.println("El array numeros2 tiene: " + numeros2.length + " elementos");
-		System.out.println("El primer elemento del array numeros2 es: " + numeros2[0]);
-
-		/*
-		 * Creando un array de Persona, es decir, un array donde cada elemento del array
-		 * es de un tipo Persona
-		 */
-
+		
 		Persona[] personas = { 
 				
 				Persona.builder()
@@ -84,7 +36,6 @@ public class App {
 				.segundoApellido("Ramirez")
 				.genero(Genero.HOMBRE)
 				.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 10))
-				.salario(3500.50)
 				.build(), 
 				
 				Persona.builder()
@@ -93,7 +44,6 @@ public class App {
 				.segundoApellido("Arrieta")
 				.genero(Genero.HOMBRE)
 				.fechaNacimiento(LocalDate.of(2000, Month.DECEMBER, 1))
-				.salario(2450.70)
 				.build(), 
 				
 				Persona.builder()
@@ -102,7 +52,6 @@ public class App {
 				.segundoApellido("Changoluisa")
 				.genero(Genero.HOMBRE)
 				.fechaNacimiento(LocalDate.of(1997, Month.SEPTEMBER, 11))
-				.salario(4800.46)
 				.build(), 
 				
 				Persona.builder()
@@ -111,7 +60,6 @@ public class App {
 				.segundoApellido("Moran")
 				.genero(Genero.HOMBRE)
 				.fechaNacimiento(LocalDate.of(2005, Month.OCTOBER, 25))
-				.salario(4500.50)
 				.build(), 
 				
 				Persona.builder()
@@ -120,141 +68,30 @@ public class App {
 				.segundoApellido("Fernandez")
 				.genero(Genero.HOMBRE)
 				.fechaNacimiento(LocalDate.of(1992, Month.NOVEMBER, 4))
-				.salario(3760.40)
 				.build() 
-			};
+		};
 		
-		/* OPERADORES */
+		/* El Operador "instanceof" se utiliza para saber si una variable de referencia o de objetoes una
+		 * instancia de un tipo, es decir, si es de una clase concreta  */
 		
-		/* Operadores aritmeticos, que son: +, -, *, /, % 
-		 * 
-		 * De anteriores operadores vamos a ejemplificar, a continuacion, el
-		 * operador % (utilizado, entre otras cosas, para saber si un numero 
-		 * es "par" o no) 
-		 * 
-		 * Vamos a implementar una sentencia de control de flujo, que no existe en SQL
-		 * que es la sentencia for, que se utiliza para recorrer los elementos de un
-		 * array, porque se conoce a priori la cantidad de elementos del erray 
-		 * 
-		 * Primero utilizaremos la sentencia for clasica y posteriormente la sentencia
-		 * for mejorado (mal llamado for each) */
+		Persona p1 = new Persona();
+		Estudiante e1 = new Estudiante();
 		
-		/* El Ejemplo, concretamente seria:
-		 * 
-		 * 1- Declarar un array de 100 elementos
-		 * 2- Agregarle valores al array 
-		 * 3- Recorrer el array y solamente mostrar los elementos que sean pares.
-		 * */
+		e1.setTotalAsignaturas(10);
 		
-		// Declaracion del array de 100 elementos
+		Empleado emp1 = new Empleado();
 		
-		int[] numerosEnteros = new int[TOTAL_ELEMENTOS];
+		emp1.setSalario(9450.25);
 		
-		// Recorrer el array numerosEnteros y asignar a cada elemento un valor entre 1
-		// y 100
+		/*  Invocar el método printobject */
 		
-//		for (int i = 0; i <= TOTAL_ELEMENTOS - 1; i = i + 1) {
-//			
-//			numerosEnteros[i] = i + 1;
-//		}
+		printObject(p1);
+		printObject(e1);
+		printObject(emp1);
 		
-		/* La expresion i = i + 1 da lugar al operador de auto incremento
-		 * que seria i++ *
-		 * 
-		 * 
-		 * NOTA IMPORTANTE!!!
-		 * 
-		 * Cuando el operador de auto incremento (++) o tambien auto decremento (--)
-		 * esta solo en una sentencia da lo mismo que vaya delante de la variable o detras, 
-		 * es decir, ++i; es lo mismo que i++;
-		 * 
-		 * Pero, cuando el operador de auto incremento o auto decremento esta en una expresion
-		 * aqui si importa el orden, por ejemplo
-		 * 
-		 * ++i * 25; Primero incrementa el valor de la i y luego lo multiplica por 25
-		 * i-- * 25; Primero decrementa el valor de la i y luego la multiplica por 25
-		 * */
-		
-		for (int i = 0; i <= TOTAL_ELEMENTOS - 1; i++) {
-			
-			numerosEnteros[i] = i + 1;
-		}
-		
-		//  Mostrar los elementos del array original utilizando una sentencia de for mejorada
-		System.out.println("-----------  Array Original  ----------");
-		
-		for(int numeroEntero : numerosEnteros)
-			System.out.println(numeroEntero);
-	// Utilizando una sentencia for clásica, recorrer el array numerosEnteros y mostrar solamente
-		//  los que sean pares
-		System.out.println("-----------   Elementos que son 'Par' del Array Original   -----------");
-		for (int i = 0; i <= TOTAL_ELEMENTOS - 1; i++)  {
-			if (numerosEnteros[i] % 2 == 0) {
-				// Si entramos en este bloque (llave de apertura y de cierre {}) quiere decir que 
-				// el elemneto del array numerosEnteros es "Par"
-				System.out.println(numerosEnteros[i]);
-			
-			}
-		}
-		
-		// Ejercicio 3!!!
-		System.out.println("-------     Elementos Impares   ------");
-		for(int numeroEntero : numerosEnteros) {
-			if (numeroEntero % 2 != 0)  {
-				cont++;
-				System.out.println(numeroEntero);
-				
-			}
-			
-			
-		}
-			System.out.println("El total de números Impares es: " + cont);
-				
-			//   ****  Sentencias de Asignación Compuestas  ****
-			
-			/* La expresión siguiente al evaluarse, se promueve al tipo de dato int primitivo
-			 * los valores de las variables a y b, dando como resultado un valor int que no se
-			 *  puede almacenar en u  tipo short, por lo cual hay que realizar un casteo
-			 *  (type casting) que es simplemente forzar el tipo de un resultado al tipo de 
-			 *  datos que queramos y se esscribe entre parentesis.
-			 */
-			byte a = 10;
-			short b = 10;
-			
-			// b= a + b;
-			
-			// La expresion anterior genera un error en tiempo de compilación,
-			// es decir, que no hay que ejecutar el programa para que ya te informe del error.
-			
-			b = (short) (a + b);
-			System.out.println("Resultado Casteado explicitamente: " + b);
-			
-			/* El casteo debe ser evitado en la medida de las posibilidades, asi que la situación
-			 * anterior se soluciona con una sentencia de asignación compuesta  */
-			 
-			
-		//   ***   OPERADOR TERNARIO   ***
-			
-					/*  Este operador trabaja con tres operandos y es una alternativa al uso de la sentencia
-					 * condicional if, y en ocasiones es la forma posible de solucionar algún problema concreto, 
-					 * por ejemplo cuando se necesita retornar un valor en la misma sentencia  */
-			
-		String n1 = "Pepe";
-		String resultado = (n1.equals("Pepe")) ?
-				"si, n1 tiene el valor de Pepe" : 
-					"No, n1 no tiene el valor de Pepe";
-		
-		System.out.println(resultado);
-		
-		/* La condición del operador ternario NO tiene que ir entre parentesis, y en la condición podemos
-		 * utilizar muchos operadores condicionales, como AND (&&),OR (||), NOT (!), operadores relacionales (<,>,!=,etc)
-		 * pero el resultado final tiene que ser un boolean, es decir, true o false  */
-		
-		int resultado2 = b > a && n1.equals("Pepe") || b < a * 25 && b != 15 ? 10 : 50;
-		
-		System.out.println(resultado2);
 	}
-}
+} 
+
 
 
 
