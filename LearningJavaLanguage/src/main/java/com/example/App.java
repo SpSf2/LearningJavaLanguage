@@ -102,6 +102,13 @@ public class App {
 		resultado= printObject(emp1);
 		System.out.println(resultado);
 		
+		/* Ejericio de la actividad 15 de Abril: Crear un array de Objetos y agregarle elementos de tipo Empleado
+		 * de 3 empleados y 3 estudiantes con todas las propiedades de Persona en ambos casos
+		 * 2- Recorrer el array o iterar utilizando una sentencia for mejorada y para los estudiantes obtener la 
+		 * media de asignaturas matriculadas y paraa los empleados obtener el salario medio de los empleados del
+		 * genero Hombre*/
+		/* Se sugiere utilizar Pattern Maching con instanceof en el momento de recorre el array*/
+		
 	}
 } 
 
