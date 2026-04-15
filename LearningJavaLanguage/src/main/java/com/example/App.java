@@ -233,8 +233,26 @@ public class App {
 			 * anterior se soluciona con una sentencia de asignación compuesta  */
 			 
 			
+		//   ***   OPERADOR TERNARIO   ***
 			
+					/*  Este operador trabaja con tres operandos y es una alternativa al uso de la sentencia
+					 * condicional if, y en ocasiones es la forma posible de solucionar algún problema concreto, 
+					 * por ejemplo cuando se necesita retornar un valor en la misma sentencia  */
+			
+		String n1 = "Pepe";
+		String resultado = (n1.equals("Pepe")) ?
+				"si, n1 tiene el valor de Pepe" : 
+					"No, n1 no tiene el valor de Pepe";
 		
+		System.out.println(resultado);
+		
+		/* La condición del operador ternario NO tiene que ir entre parentesis, y en la condición podemos
+		 * utilizar muchos operadores condicionales, como AND (&&),OR (||), NOT (!), operadores relacionales (<,>,!=,etc)
+		 * pero el resultado final tiene que ser un boolean, es decir, true o false  */
+		
+		int resultado2 = b > a && n1.equals("Pepe") || b < a * 25 && b != 15 ? 10 : 50;
+		
+		System.out.println(resultado2);
 	}
 }
 
